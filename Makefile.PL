@@ -5,6 +5,7 @@ WriteMakefile
           'NAME' => 'Catalyst::Plugin::Session::AsObject',
           'VERSION_FROM' => 'lib/Catalyst/Plugin/Session/AsObject.pm',
           'PREREQ_PM' => {
+                           'Catalyst::Plugin::Session' => '0.20',
                            'Test::More' => '0'
                          },
           'INSTALLDIRS' => 'site',
