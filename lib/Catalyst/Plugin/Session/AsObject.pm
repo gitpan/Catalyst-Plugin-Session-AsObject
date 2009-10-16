@@ -3,41 +3,42 @@ package Catalyst::Plugin::Session::AsObject;
 use strict;
 use warnings;
 
-our $VERSION = '0.02';
+our $VERSION = '0.03';
 
+use Catalyst::Plugin::Session 0.27;
 use base 'Catalyst::Plugin::Session';
 
 use MRO::Compat;
 
-sub setup
-{
-    my $c = shift;
+sub setup {
+    my $self = shift;
 
-    $c->maybe::next::method(@_);
+    $self->maybe::next::method(@_);
 
-    my $class = $c->config()->{session}{object_class};
+    my $class = $self->_session_plugin_config()->{object_class};
 
-    die 'Must provide an object_class in the session config when using ' . __PACKAGE__
+    die 'Must provide an object_class in the session config when using '
+        . __PACKAGE__
         unless defined $class;
 
-    die "The object_class in the session config is either not loaded or does not have a new() method"
+    die
+        "The object_class in the session config is either not loaded or does not have a new() method"
         unless $class->can('new');
 }
 
-sub has_session_object
-{
+sub has_session_object {
     my $self = shift;
 
     return $self->sessionid() && $self->session()->{__object};
 }
 
-sub session_object
-{
+sub session_object {
     my $self = shift;
 
     my $session = $self->session();
 
-    $session->{__object} ||= $self->config()->{session}{object_class}->new();
+    $session->{__object}
+        ||= $self->_session_plugin_config()->{object_class}->new();
 
     return $self->session()->{__object};
 }
@@ -58,26 +59,27 @@ Catalyst::Plugin::Session::AsObject - Make your session data an object
 
     use MyApp::Session;
 
-    use Catalyst qw( Session
-                     Session::AsObject
-                     Session::Store::DBI
-                     Session::State::Cookie
-                   );
+    use Catalyst qw(
+        Session
+        Session::AsObject
+        Session::Store::DBI
+        Session::State::Cookie
+    );
 
-    __PACKAGE__->config
-        ( session => { ...,
-                       object_class => 'MyApp::Session',
-                     },
-        );
+    __PACKAGE__->config(
+        'Plugin::Session' => {
+            ...,
+            object_class => 'MyApp::Session',
+        },
+    );
 
-    sub foo : Global
-    {
+    sub foo : Global {
         my $self = shift;
         my $c    = shift;
 
         my $session = $c->session_object();
 
-        if ( $session->has_error_messages() ) { ... }
+        if ( $session->has_error_messages() ) {...}
     }
 
 

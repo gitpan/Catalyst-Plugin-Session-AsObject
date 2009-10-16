@@ -6,7 +6,7 @@ use Module::Build;
 my $builder = Module::Build->new
     ( module_name        => 'Catalyst::Plugin::Session::AsObject',
       license            => 'perl',
-      requires           => { 'Catalyst::Plugin::Session' => '0.20' },
+      requires           => { 'Catalyst::Plugin::Session' => '0.27' },
       build_requires     => { 'Test::More' => '0',
                             },
       create_readme      => 1,

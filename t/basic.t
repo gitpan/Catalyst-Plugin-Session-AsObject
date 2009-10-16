@@ -36,7 +36,7 @@ throws_ok( sub { MockContext->new()->setup() },
            qr/\QMust provide an object_class in the session config when using Catalyst::Plugin::Session::AsObject/,
            'cannot use Session::AsObject without setting object_class config item' );
 
-$config{session}{object_class} = 'DoesNotExist';
+$config{'Plugin::Session'}{object_class} = 'DoesNotExist';
 
 throws_ok( sub { MockContext->new()->setup() },
            qr/\QThe object_class in the session config is either not loaded or does not have a new() method/,
@@ -48,7 +48,7 @@ throws_ok( sub { MockContext->new()->setup() },
     sub new { bless {}, $_[0] }
 }
 
-$config{session}{object_class} = 'MySession';
+$config{'Plugin::Session'}{object_class} = 'MySession';
 
 lives_ok( sub { MockContext->new()->setup() },
           'setup works when object_class exists' );

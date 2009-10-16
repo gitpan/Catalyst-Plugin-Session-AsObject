@@ -6,26 +6,27 @@ SYNOPSIS
 
         use MyApp::Session;
 
-        use Catalyst qw( Session
-                         Session::AsObject
-                         Session::Store::DBI
-                         Session::State::Cookie
-                       );
+        use Catalyst qw(
+            Session
+            Session::AsObject
+            Session::Store::DBI
+            Session::State::Cookie
+        );
 
-        __PACKAGE__->config
-            ( session => { ...,
-                           object_class => 'MyApp::Session',
-                         },
-            );
+        __PACKAGE__->config(
+            'Plugin::Session' => {
+                ...,
+                object_class => 'MyApp::Session',
+            },
+        );
 
-        sub foo : Global
-        {
+        sub foo : Global {
             my $self = shift;
             my $c    = shift;
 
             my $session = $c->session_object();
 
-            if ( $session->has_error_messages() ) { ... }
+            if ( $session->has_error_messages() ) {...}
         }
 
 DESCRIPTION
