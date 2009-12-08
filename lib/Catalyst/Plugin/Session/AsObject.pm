@@ -3,7 +3,7 @@ package Catalyst::Plugin::Session::AsObject;
 use strict;
 use warnings;
 
-our $VERSION = '0.03';
+our $VERSION = '0.04';
 
 use Catalyst::Plugin::Session 0.27;
 use base 'Catalyst::Plugin::Session';

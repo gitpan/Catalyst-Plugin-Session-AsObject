@@ -1,23 +1,24 @@
 ---
-name: Catalyst-Plugin-Session-AsObject
-version: 0.03
+abstract: 'Make your session data an object'
 author:
   - 'Dave Rolsky, E<gt>autarch@urth.orgE<lt>'
-abstract: Make your session data an object
-license: perl
-resources:
-  license: http://dev.perl.org/licenses/
 build_requires:
+  Test::Exception: 0
   Test::More: 0
-requires:
-  Catalyst::Plugin::Session: 0.27
 configure_requires:
   Module::Build: 0.35
-provides:
-  Catalyst::Plugin::Session::AsObject:
-    file: lib/Catalyst/Plugin/Session/AsObject.pm
-    version: 0.03
-generated_by: Module::Build version 0.35
+generated_by: 'Module::Build version 0.351'
+license: perl
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
   version: 1.4
+name: Catalyst-Plugin-Session-AsObject
+provides:
+  Catalyst::Plugin::Session::AsObject:
+    file: lib/Catalyst/Plugin/Session/AsObject.pm
+    version: 0.04
+requires:
+  Catalyst::Plugin::Session: 0.27
+resources:
+  license: http://dev.perl.org/licenses/
+version: 0.04
