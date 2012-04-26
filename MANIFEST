@@ -1,12 +1,19 @@
-Build.PL
 Changes
-lib/Catalyst/Plugin/Session/AsObject.pm
-Makefile.PL
-MANIFEST			This list of files
+INSTALL
+LICENSE
+MANIFEST
+META.json
 META.yml
+Makefile.PL
 README
+dist.ini
+lib/Catalyst/Plugin/Session/AsObject.pm
 t/basic.t
-t/kwalitee.t
-t/pod-coverage.t
-t/pod.t
-SIGNATURE    Added here by Module::Build
+t/release-cpan-changes.t
+t/release-eol.t
+t/release-no-tabs.t
+t/release-pod-coverage.t
+t/release-pod-linkcheck.t
+t/release-pod-no404s.t
+t/release-pod-spell.t
+t/release-pod-syntax.t

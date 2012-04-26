@@ -1,9 +1,10 @@
 package Catalyst::Plugin::Session::AsObject;
+{
+  $Catalyst::Plugin::Session::AsObject::VERSION = '0.05';
+}
 
 use strict;
 use warnings;
-
-our $VERSION = '0.04';
 
 use Catalyst::Plugin::Session 0.27;
 use base 'Catalyst::Plugin::Session';
@@ -45,13 +46,19 @@ sub session_object {
 
 1;
 
-__END__
+# ABSTRACT: Make your session data an object
+
+
 
 =pod
 
 =head1 NAME
 
 Catalyst::Plugin::Session::AsObject - Make your session data an object
+
+=head1 VERSION
+
+version 0.05
 
 =head1 SYNOPSIS
 
@@ -81,7 +88,6 @@ Catalyst::Plugin::Session::AsObject - Make your session data an object
 
         if ( $session->has_error_messages() ) {...}
     }
-
 
 =head1 DESCRIPTION
 
@@ -116,10 +122,6 @@ The "object_class" must already be loaded, and must have a C<new()>
 method as its constructor. This constructor must not require any
 parameters, as it will be called without any arguments.
 
-=head1 AUTHOR
-
-Dave Rolsky, E<gt>autarch@urth.orgE<lt>
-
 =head1 BUGS
 
 Please report any bugs or feature requests to
@@ -149,11 +151,20 @@ To donate, log into PayPal and send money to autarch@urth.org or use
 the button on this page:
 L<http://www.urth.org/~autarch/fs-donation.html>
 
-=head1 COPYRIGHT & LICENSE
+=head1 AUTHOR
 
-Copyright 2009 Dave Rolsky, All Rights Reserved.
+Dave Rolsky, E<gt>autarch@urth.orgE<lt>
 
-This program is free software; you can redistribute it and/or modify
-it under the same terms as Perl itself.
+=head1 COPYRIGHT AND LICENSE
+
+This software is Copyright (c) 2012 by Dave Rolsky.
+
+This is free software, licensed under:
+
+  The Artistic License 2.0 (GPL Compatible)
 
 =cut
+
+
+__END__
+
